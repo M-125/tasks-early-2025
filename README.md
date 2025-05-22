@@ -30,6 +30,7 @@ Mappastruktúra:
 Képzeld el, hogy egy fantasy játékot tervezel, ahol minden véletlenszerű eseményt dobókockával kell eldönteni – pont úgy, mint a Dungeons & Dragons játékokban! A feladatod, hogy két egész számmal jelölt számintervallumot (pl. `2` és `5` között) kifejezz szabványos dobókockák kombinációjával és szükség esetén egy eltolással (pl.: `-2`, `+1`).
 
 Elérhető dobókockák: `d20`, `d10`, `d8`, `d6`, `d4`, `d3`, `d2` - A számértékek a kockák oldalszámát mutatják: pl. d10 egy tízoldalú dobókockát jelöl. A d2 egy pénzérmének felel meg.
+
 Minden „dX” dobás 1 és X közötti értéket ad vissza. Például 1d6 azt jelenti, hogy egy darab hatoldalú kockával dobsz egyszer, a kidobható érték pedig 1 és 6 között lesz, inkluzívan.
 
 ### Bemenet:
@@ -108,24 +109,23 @@ A feladat egy olyan program elkészítése, amely kiírja az összes **3-mal osz
 
 ### Leírás:
 
-Dekódolni kell rádiójelekből álló információt. A jelek csipogásokból állnak, amelyeket szünetek választanak el, így alakulnak ki a kódok (pl. `3.4`, `2.1.2.4`).
-Minden nap reggelén új kódokat adnak le, napközben események történnek.
+Feladatod hogy dekódold két ellenséges bázis közötti rádió kommunikációt. Belehallgatva a rádióadásukba, rövid csipogásokat hallasz és egy rövid szünetet egy-egy adag csipogás között. Úgy tűnik ez egy kód, gyorsan fel is jegyezted a hallottakat amelyek a következők: 3.4 (3 csipogás, majd egy rövid szünet, majd 4 csipogás) 2.1.2.4 (2 csipogás, 1 csipogás, 2 csipogás, 4 csipogás)
 
-A cél: kideríteni, hogy melyik kód melyik eseményhez tartozik.
+A kódokat minden nap reggelén közvetítik. A nap folyamán történteket is feljegyezted: jelek = [“3.4”, “2.1.2.4”] esemenyek = [“A”, “B”] (Tudjuk, hogy "3.4" és "2.1.2.4" biztosan az "A" és "B" eseményhez köthetőek, de nem tudjuk melyik kód melyik eseméynt jelenti.)
+
+Több napnyi kód összehasonlításával meg tudod fejteni a kódokat; a megoldás pedig így néz ki. decoded = {“3.4”: “B”, “2.1.2.4”: “A”}
+
+Továbbá: - Több napnyi jeleket és eseményeket fogsz kapni, melyeket fel kell majd dolgoznod. - Minden kód csak egy eseményt jelenthet, viszont egy eseménynek lehet több különböző kódja is. - Mindig lesz elegendő információ a feladat megoldásához.
 
 ### Bemenet:
 
-* Egy lista, amely napokat reprezentál, minden nap egy `(codes, events)` tuple:
-
-  * `codes`: list of string kódok (pl. `["3.4", "2.1.2.4"]`)
-  * `events`: list of események (pl. `["A", "B"]`)
+A bemenet egy lista lesz, amelyben minden egyes napot egy-egy tuple fog reprezentálni. Egy adott naphoz tartozó tuple-ben lesz két lista: 
+* Az első lista tartalmazza az adott nap reggelén hallott kódokat mint string-ek (pl.: ["5", "3.4", "2.1.2.4"])
+* A második listában pedig az adott nap eseményei lesznek mint betűk (pl.: ["A", "B", "O", "I"])
 
 ### Kimenet:
 
-* Egy dictionary formátumban, ahol:
-
-  * kulcs: string kód
-  * érték: esemény betűjele
+A programnak az adott lista bemenetre ki kell írnia a megfejtést egy dictionary-be rendezve a következő péda szerint. Fontos, hogy a ditonary kulcsaiként szerepeljenek stringként a kódok, az értékeik pedig a történések betűjelei legyenek szintén mint string.
 
 ### Példa:
 
@@ -161,12 +161,12 @@ A cél: kideríteni, hogy melyik kód melyik eseményhez tartozik.
 
 Ez a feladat egy egyszerű mechanikai rendszert szimulál, amely három fogaskereket és két kart tartalmaz. A fogaskerekek nem érintkeznek egymással. Minden fogaskeréknek hat foga van, rajtuk számok, 1-től 3-ig sorrendben: 1, 2, 3, 1, 2, 3.
 
-Egy fogaskeréken csak egy érték látható egy adott pillanatban. Ha más értéket szeretnénk látni, forgatni kell azt.
+Egy fogaskeréken csak egy érték látható egy adott pillanatban. Ha más értéket szeretnénk látni, forgatni kell azt. A karok meghúzása meghatározott módon forgatja a fogaskerekeket.
 
 **Kezdeti beállítás:**
 
 * Három fogaskerék van.
-* Kezdetben mindhárom fogaskeréken a **3** érték látható.
+* Kezdetben mindhárom fogaskeréken a `3` érték látható.
 
 **Karok:**
 
@@ -203,7 +203,7 @@ Minden alkalommal, amikor meghúzunk egy kart:
 ***console printout:***
 
 ```
-left right left
+left left right right
 ```
 
 ---
@@ -239,17 +239,17 @@ Található egy _thinking.txt_ a feladat mappájában, kérünk titeket hogy ame
 ![image](https://github.com/user-attachments/assets/17d3c677-d6b3-4794-bfd5-94ccef05f6d7)
 
 
-5. Nézd meg jól az ábrát! Szerinted milyen magas az ott látható asztal?
+5. Nézd meg jól az ábrát! Milyen magas az ott látható asztal (cm-ben)?
 
 ![image](https://github.com/user-attachments/assets/1337df46-b12e-4b9f-9985-f56c517c7481)
 
 
-6. Itt van három állat – szerinted összesen hány kilót nyomnak?
+6. Itt van három állat – összesen hány kilót nyomnak?
 
 ![image](https://github.com/user-attachments/assets/2ff93b58-e5f4-4b51-b1fc-d460e7a9ff75)
 
 
-7. Anna és Balázs felváltva dobnak egy szabályos dobókockával. Anna kezd, és az nyer, aki először hatost dob. A játék véget ér, amint valaki hatost dob. Szerinted mekkora az esélye annak, hogy Anna nyeri a játékot?
+7. Anna és Balázs felváltva dobnak egy szabályos dobókockával. Anna kezd, és az nyer, aki először hatost dob. A játék véget ér, amint valaki hatost dob. Mekkora az esélye annak, hogy Anna nyeri a játékot?
 
 **Bemenet:**
 
