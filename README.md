@@ -212,3 +212,66 @@ A cél: kideríteni, hogy melyik kód melyik eseményhez tartozik.
 ```
 
 ---
+
+## 5. Matematika kvíz
+
+**Feladatmappa:**
+
+`math_quiz`
+
+**Leírás:**
+
+7 alfeladat van, amelyet meg kell oldanotok, ezek az alfeladatok egymástól függetlenek.
+Található egy _thinking.txt_ a feladat mappájában, kérünk titeket hogy amennyire tudjátok vezessétek le a megoldásotokat ott vagy a `main.py`-ban kommentek formájában.
+
+1. Mekkora lehet a kör sugara, amit a képen látsz?
+
+![image](https://github.com/user-attachments/assets/8cfee45e-3047-4d59-9ff3-e64d10cae002)
+
+
+2. Oldd meg ezt az egyenletet! Kíváncsiak vagyunk, mit kapsz eredménynek!
+
+![image](https://github.com/user-attachments/assets/793269c3-895e-4802-9d23-152063a1ba94)
+
+
+3. Számold ki, mennyi az értéke ennek a kifejezésnek!
+
+![image](https://github.com/user-attachments/assets/98dae480-7485-4277-9bbc-f15bd7d84f30)
+
+
+4. Van itt még egy egyenlet – meg tudod oldani?
+
+![image](https://github.com/user-attachments/assets/17d3c677-d6b3-4794-bfd5-94ccef05f6d7)
+
+
+5. Nézd meg jól az ábrát! Szerinted milyen magas az ott látható asztal?
+
+![image](https://github.com/user-attachments/assets/1337df46-b12e-4b9f-9985-f56c517c7481)
+
+
+6. Itt van három állat – szerinted összesen hány kilót nyomnak?
+
+![image](https://github.com/user-attachments/assets/2ff93b58-e5f4-4b51-b1fc-d460e7a9ff75)
+
+
+7. Anna és Balázs felváltva dobnak egy szabályos dobókockával. Anna kezd, és az nyer, aki először hatost dob. A játék véget ér, amint valaki hatost dob. Szerinted mekkora az esélye annak, hogy Anna nyeri a játékot?
+
+**Bemenet:**
+
+Nincs külön bemeneti fájl. Minden szükséges információ a feladatleírásból vagy az ábrákból szerezhető meg.
+
+**Kimenet:**
+
+A programnak sorban ki kell írnia a 7 feladat megoldását, minden megoldást külön sorba.
+
+**Példa:**
+
+*console printout:*
+
+```
+1.: 450
+2.: 1943
+...
+6.: 123
+7.: 1.5
+```
