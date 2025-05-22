@@ -21,63 +21,7 @@ Itt a megadott új feladat a korábbi mintához illeszkedően, markdown formátu
 
 ---
 
-## 1. Fogaskerekek
-
-**Feladatmappa:**
-
-`gear_system`
-
-### Leírás:
-
-Ez a feladat egy egyszerű mechanikai rendszert szimulál, amely három fogaskereket és két kart tartalmaz. A fogaskerekek nem érintkeznek egymással. Minden fogaskeréknek hat foga van, rajtuk számok, 1-től 3-ig sorrendben: 1, 2, 3, 1, 2, 3.
-
-Egy fogaskeréken csak egy érték látható egy adott pillanatban. Ha más értéket szeretnénk látni, forgatni kell azt.
-
-**Kezdeti beállítás:**
-
-* Három fogaskerék van.
-* Kezdetben mindhárom fogaskeréken a **3** érték látható.
-
-**Karok:**
-
-* `left_lever` = `[1, 1, 0]` – az első (0.) és második (1.) fogaskereket forgatja előre 1-gyel.
-* `right_lever` = `[0, 1, 1]` – a második (1.) és harmadik (2.) fogaskereket forgatja előre 1-gyel.
-
-**Fogaskerekek mozgása:**
-
-* Minden karhúzáskor a hozzá tartozó értékek hozzáadódnak az aktuális értékhez.
-* Ha az új érték meghaladja a 3-at, akkor visszaugrik 1-re.
-* Ha az érték 1 alá csökkenne (hátrafelé forgatás esetén), akkor 3-ra ugrik vissza.
-
-### Bemenet:
-
-* Egy lista, amely a kívánt végállapotot tartalmazza (pl. `[2, 1, 2]`)
-* Egy opcionális egész szám, a maximális karhúzások száma (alapértelmezés szerint 8)
-
-### Kimenet:
-
-* Ha elérhető a kívánt végállapot, akkor írja ki soronként a szükséges karhúzásokat: pl. `left`, `right`, stb.
-* Ha nem, akkor írja ki: `Megoldhatatlan`
-
-### Példa:
-
-***input.txt***
-
-```
-[2, 1, 2]
-```
-
-***console printout:***
-
-```
-left
-right
-left
-```
-
----
-
-## 2. Dobókocka intervallum
+## 1. Dobókocka intervallum
 
 **Feladatmappa:**
 
@@ -122,7 +66,7 @@ Egy `dX` típusú dobás 1 és X közötti értéket ad vissza.
 
 ---
 
-## 3. Fibonacci
+## 2. Fibonacci
 
 **Feladatmappa:**
 
@@ -162,7 +106,7 @@ A feladat egy olyan program elkészítése, amely kiírja az összes **3-mal osz
 
 ---
 
-## 4. Jelek
+## 3. Jelek
 
 **Feladatmappa:**
 
@@ -213,7 +157,7 @@ A cél: kideríteni, hogy melyik kód melyik eseményhez tartozik.
 
 ---
 
-## 5. Matematika kvíz
+## 4. Matematika kvíz
 
 **Feladatmappa:**
 
