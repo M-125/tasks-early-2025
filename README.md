@@ -3,7 +3,7 @@
 **Általános információk:**
 
 Minden feladatnak megvan a saját „munkaterülete” (workspace), saját feladatmappája. Kérjük, maradjatok ezekben a mappákban, amikor a megoldásokon dolgoztok. Ha valamilyen dependency-re szükségetek van, írjátok a _requirements.txt_ fájlba, és az automatikusan telepítve lesz, ha nem üres.
-A pontokat először az alapján adjuk, hogy a feladatok helyesen és teljesen vannak-e megoldva. Ezután a megvalósítást, a funkcionalitást, a kód szépségét és olvashatóságát is figyelembe vesszük. Több fájlban is dolgozhattok, és használhattok absztrakciót is. A pontozásnál a harmadik és a negyedik feladat nehezebb, ezért ezek dupla pontot érnek.
+A pontokat először az alapján adjuk, hogy a feladatok helyesen és teljesen vannak-e megoldva. Ezután a megvalósítást, a funkcionalitást, a kód szépségét és olvashatóságát is figyelembe vesszük. Több fájlban is dolgozhattok, és használhattok absztrakciót is. A pontozásnál a negyedik feladat nehezebb, ezért ez dupla pontot ér.
 
 Mappastruktúra:
 
@@ -15,9 +15,7 @@ Mappastruktúra:
 - A megoldások futási ideje nem haladhatja meg az 5 másodpercet. Ha egy kód ennél tovább fut, automatikusan leállítjuk.
 - Figyeljetek arra, hogy ne módosítsátok a .github mappát.
 - Ne nevezzétek át és ne töröljétek a main.py fájlt.
-- A leaderboard nem a végleges állást mutatja, csak a szórakoztatás céljából van ott. Minden eredményt egyénileg végig nézünk és pontozunk a fentiekben meghatározottak alapján.
-
-Itt a megadott új feladat a korábbi mintához illeszkedően, markdown formátumban és magyar nyelven:
+- A leaderboard nem a végleges állást mutatja, csak a szórakoztatás céljából van ott, a százalékos egyezés sem feltétlenül tükrözi a végső eredményt. Minden megoldást egyénileg végig nézünk és pontozunk a fentiekben meghatározottak alapján. 
 
 ---
 
@@ -29,10 +27,10 @@ Itt a megadott új feladat a korábbi mintához illeszkedően, markdown formátu
 
 ### Leírás:
 
-Két egész számmal jelölt számintervallumot kell szabványos dobókockák kombinációjával és szükség esetén egy eltolással (pl. `+2`, `-1`) kifejezni.
+Képzeld el, hogy egy fantasy játékot tervezel, ahol minden véletlenszerű eseményt dobókockával kell eldönteni – pont úgy, mint a Dungeons & Dragons játékokban! A feladatod, hogy két egész számmal jelölt számintervallumot (pl. `2` és `5` között) kifejezz szabványos dobókockák kombinációjával és szükség esetén egy eltolással (pl.: `-2`, `+1`).
 
-Elérhető dobókockák: `d20`, `d10`, `d8`, `d6`, `d4`, `d3`, `d2`
-Egy `dX` típusú dobás 1 és X közötti értéket ad vissza.
+Elérhető dobókockák: `d20`, `d10`, `d8`, `d6`, `d4`, `d3`, `d2` - A számértékek a kockák oldalszámát mutatják: pl. d10 egy tízoldalú dobókockát jelöl. A d2 egy pénzérmének felel meg.
+Minden „dX” dobás 1 és X közötti értéket ad vissza. Például 1d6 azt jelenti, hogy egy darab hatoldalú kockával dobsz egyszer, a kidobható érték pedig 1 és 6 között lesz, inkluzívan.
 
 ### Bemenet:
 
@@ -50,18 +48,14 @@ Egy `dX` típusú dobás 1 és X közötti értéket ad vissza.
 
 ```
 2 5
-4 15
 1 23
-6 9
 ```
 
 ***console printout:***
 
 ```
 1d4+1
-1d2+1d4+1d8+1
 1d4+1d20-1
-1d4+5
 ```
 
 ---
