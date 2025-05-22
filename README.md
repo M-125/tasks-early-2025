@@ -1,4 +1,4 @@
-# Nokia Hackathon (early 2024)
+# Nokia Hackathon (early 2025)
 
 **Általános információk:**
 
@@ -15,210 +15,200 @@ Mappastruktúra:
 - A megoldások futási ideje nem haladhatja meg az 5 másodpercet. Ha egy kód ennél tovább fut, automatikusan leállítjuk.
 - Figyeljetek arra, hogy ne módosítsátok a .github mappát.
 - Ne nevezzétek át és ne töröljétek a main.py fájlt.
-- A leaderboard nem a végleges állást mutatja, csak a szórakoztatás céljából van ott. Minden eredményt egyénileg végig náünk és pontozunk a fentiekben meghatározottak alapján.
+- A leaderboard nem a végleges állást mutatja, csak a szórakoztatás céljából van ott. Minden eredményt egyénileg végig nézünk és pontozunk a fentiekben meghatározottak alapján.
 
-## 1. Palindróma-e
+Itt a megadott új feladat a korábbi mintához illeszkedően, markdown formátumban és magyar nyelven:
 
-**Feladatmappa:**
+---
 
-palindrome_checker
-
-**Leírás:**
-
-A feladatotok egy olyan program fejlesztése, amely ellenőrzi, hogy egy adott karakterlánc palindróma-e, miközben csak az alfanumerikus karaktereket [a-zA-Z0-9] veszi figyelembe, és figyelmen kívül hagyja a nagy- és kisbetűk közötti különbségeket. Emellett a programnak meg kell számolnia az egyedi karakterek számát a karakterláncban.
-
-**Bemenet:**
-
-A bemenet egy karakterláncokból álló lista, amely betűket, számjegyeket, írásjeleket, szimbólumokat és szóközöket tartalmazhat. A karakterlánc nagy- és kisbetűk kombinációja lehet.
-
-**Kimenet:**
-
-A programnak a következőket kell biztosítania:
-
-1. Hogy a bemeneti karakterlánc palindróma-e.
-2. Az egyedi alfanumerikus karakterek számát a karakterláncban.
-
-**Példa:**
-
-_input.txt_
-
-```
-racecar
-hello
-1232112321
-worldmadamhelloworld
-1234567890
-!racecar
-CivIC
-```
-
-_console printout:_
-
-```
-YES, 4
-NO, -1
-YES, 3
-NO, -1
-NO, -1
-YES, 4
-YES, 3
-```
-
-## 2. Útvesztő
+## 1. Fogaskerekek
 
 **Feladatmappa:**
 
-maze_solver
+`gear_system`
 
-**Leírás:**
+### Leírás:
 
-A feladatotok egy olyan program fejlesztése, amely képes egy 2D útvesztő rácson keresztül navigálni, egy kijelölt ponttól elindulva elérni a célt, miközben elkerüli az akadályokat. Az útvesztő rács folyosókból, falakból, egy startól és a célból áll. A programnak meg kell találnia a legrövidebb és leggyorsabb utat a startól a célig.
+Ez a feladat egy egyszerű mechanikai rendszert szimulál, amely három fogaskereket és két kart tartalmaz. A fogaskerekek nem érintkeznek egymással. Minden fogaskeréknek hat foga van, rajtuk számok, 1-től 3-ig sorrendben: 1, 2, 3, 1, 2, 3.
 
-**Bemenet:**
+Egy fogaskeréken csak egy érték látható egy adott pillanatban. Ha más értéket szeretnénk látni, forgatni kell azt.
 
-A bemenet egy 2D rács, amely az útvesztőt ábrázolja. Karaktereket tartalmaz az útvesztő elemeinek jelölésére.
+**Kezdeti beállítás:**
 
-- 'S' a start jelölésére
-- 'G' a cél jelölésére
-- '.' a nyitott útvonalak jelölésére
-- '#' a falak vagy akadályok jelölésére
+* Három fogaskerék van.
+* Kezdetben mindhárom fogaskeréken a **3** érték látható.
 
-**Kimenet:**
+**Karok:**
 
-A programnak meg kell adnia az utat a startól a célig. Ezt az utat a mozgás irányaival kell ábrázolni, mint például: 'U' felfelé, 'D' lefelé, 'L' balra, 'R' jobbra, és tartalmaznia kell a startot 'S' és a célt 'G'.
+* `left_lever` = `[1, 1, 0]` – az első (0.) és második (1.) fogaskereket forgatja előre 1-gyel.
+* `right_lever` = `[0, 1, 1]` – a második (1.) és harmadik (2.) fogaskereket forgatja előre 1-gyel.
 
-**Példa:**
+**Fogaskerekek mozgása:**
 
-_input.txt_
+* Minden karhúzáskor a hozzá tartozó értékek hozzáadódnak az aktuális értékhez.
+* Ha az új érték meghaladja a 3-at, akkor visszaugrik 1-re.
+* Ha az érték 1 alá csökkenne (hátrafelé forgatás esetén), akkor 3-ra ugrik vissza.
 
-```
-A
-# # # # # # #
-# S . . . . #
-# # . # # . #
-# . . # . . #
-# . . . # # #
-# . # G . . #
-# # # # # # #
+### Bemenet:
 
-B
-*****
-```
+* Egy lista, amely a kívánt végállapotot tartalmazza (pl. `[2, 1, 2]`)
+* Egy opcionális egész szám, a maximális karhúzások száma (alapértelmezés szerint 8)
 
-A programnak meg kell mutatnia az utat a starttól a célig. Ezt az utat a mozgás irányaival kell jelölni, például: 'U' felfelé, 'D' lefelé, 'L' balra, 'R' jobbra, és tartalmaznia kell a startot 'S' és a célt 'G'.
+### Kimenet:
 
-_console printout:_
+* Ha elérhető a kívánt végállapot, akkor írja ki soronként a szükséges karhúzásokat: pl. `left`, `right`, stb.
+* Ha nem, akkor írja ki: `Megoldhatatlan`
+
+### Példa:
+
+***input.txt***
 
 ```
-A
-S R D D D R D G
-
-B
-*****
+[2, 1, 2]
 ```
 
-A program a mozgások sorrendjét adja meg: jobbra (R), lefelé (D), balra (L) és felfelé (U).
+***console printout:***
 
-**Megjegyzés:**
+```
+left
+right
+left
+```
 
-Győződjetek meg arról, hogy a program helyesen navigál az útvesztőben, elkerülve az akadályokat, és megtalálva az utat a célhoz.
+---
 
-## 3. Mátrix Műveletek
+## 2. Dobókocka intervallum
 
 **Feladatmappa:**
 
-matrix_operations
+`dice_range_expression`
 
-**Leírás:**
+### Leírás:
 
-A feladatotok egy olyan program fejlesztése, amely különböző méretű mátrixokon képes műveleteket végrehajtani. Ezek a műveletek magukban foglalják a mátrixok összeadását és szorzását. A programnak elég rugalmasnak kell lennie ahhoz, hogy különböző méretű mátrixokkal is dolgozni tudjon.
+Két egész számmal jelölt számintervallumot kell szabványos dobókockák kombinációjával és szükség esetén egy eltolással (pl. `+2`, `-1`) kifejezni.
 
-**Bemenet:**
+Elérhető dobókockák: `d20`, `d10`, `d8`, `d6`, `d4`, `d3`, `d2`
+Egy `dX` típusú dobás 1 és X közötti értéket ad vissza.
 
-A bemenet egy mátrixokat tartalmazó lista értékekkel és a műveletek listája.
+### Bemenet:
 
-**Kimenet:**
+* `min_val`: legkisebb dobási eredmény (egész szám)
+* `max_val`: legnagyobb dobási eredmény (egész szám)
 
-A programnak a megadott mátrix műveleteket kell megoldanija.
+### Kimenet:
 
-**Példa:**
+* Egy string, amely dobókockák kombinációjával írja le az adott tartományt.
+* A cél: a lehető legkevesebb kocka használata, eltolás csak ha szükséges.
 
-_input.txt_
+### Példa:
 
-```
-matrices
-
-A
-2 1
-3 4
-
-B
-1 0
-5 6
-
-operations
-
-A + B
-A * B
-```
-
-_console printout:_
+***input.txt***
 
 ```
-A + B
-3 1
-8 10
-
-A * B
-7 6
-23 24
+2 5
+4 15
+1 23
+6 9
 ```
 
-**Megjegyzés:**
+***console printout:***
 
-Győződjön meg arról, hogy a program helyesen kezeli a különböző méretű mátrixokat, és pontosan végzi a műveleteket.
+```
+1d4+1
+1d2+1d4+1d8+1
+1d4+1d20-1
+1d4+5
+```
 
-## 4. Matematika kvíz
+---
+
+## 3. Fibonacci
 
 **Feladatmappa:**
 
-math_quiz
+`fibonacci`
 
-**Leírás:**
+### Leírás:
 
-9 alfeladat van, amelyet meg kell oldanotok, ezek az alfeladatok egymástól függetlenek.
-Található egy _thinking.txt_ a feladat mappájában, kérünk titeket hogy amennyire tudjátok vezessétek le a megoldásotokat ott.
+A feladat egy olyan program elkészítése, amely kiírja az összes **3-mal osztható Fibonacci-számot** 0-tól N-ig.
 
-1. Egy vonat állandó sebességgel halad át egy alagúton. 20 másodpercig tart, amíg a 300 m hosszú alagúton átér, onnantól, hogy az eleje eléri az alagút elejét, addig, amíg a vége el nem hagyja. Egy lámpa az alagútban pont 5 másodpercen át van a vonat felett. Milyen hosszú a vonat (méterben)?
+### Bemenet:
 
-2. Egy cukrász két 2 cm, egy 6 cm és egy 8 cm oldalélű marcipánkocka összeragasztásával egy nagyobb testet épített úgy, hogy egy-egy illesztésnél az egyik marcipánkocka teljes oldala ráfeküdt a másik kocka egy lapjára. A kész testből kivághatunk magunknak egy téglatestet, de csak olyan sík mentén vághatunk, amely illeszkedik valamelyik kocka lapjára. Mekkora a legnagyobb térfogatú marcipántégla, amit így kaphatunk (köbcentiméterben)?
+* Egy egész szám (`N`)
+* Ha a bemenet nem értelmezhető (pl. nem szám), vagy nincs egyetlen megoldás sem: `N/A`
 
-3. Jancsi és Juliska a tőlük 20 km-re levő mézeskalácsházhoz igyekszik. Kettejüknek van egy biciklijük, amin egyszerre csak egyikük tud ülni. Elhatározták, hogy először Jancsi fog gyalogolni, és Juliska biciklizik valameddig, ott leteszi a biciklit, majd gyalog megy tovább. Amikor Jancsi odaér, felszáll a biciklire, és elmegy vele a mézeskalácsházig. Jancsi 5 km/h sebességgel gyalogol és 12 km/h sebességgel biciklizik, Juliska 4 km/h sebességgel gyalogol, és 10 km/h sebességgel biciklizik. Hány km-t kell Juliskának bicikliznie, hogy egyszerre érjenek a mézeskalácsházhoz, ha egyszerre is indulnak el?
+### Kimenet:
 
-4. Egy koordinátarendszerben megrajzoltuk az origó középpontú, 5 egység sugarú kört. Hány rácspont esik erre a körvonalra? (Rácspontnak nevezzük azokat a pontokat, melyeknek mindkét koordinátája egész szám.)
+* Az összes `X` Fibonacci-szám, amelyre `0 <= X <= N` és `X % 3 == 0`
+* A számok **vesszővel és szóközzel** elválasztva jelenjenek meg
 
-5. A koordináta-rendszerben az ABC háromszög csúcspontjai: A(0;4), B(3;0), C(c;6). A háromszög területe 7. Mekkora a c, ha tudjuk, hogy 0<c<3 ?
+### Példa:
 
-6. Néhányan paintball-ütközetet vívnak egymással. Egy adott helyzetben egymástól való távolságaik mind különbözők. Ekkor mindenki rálő a hozzá legközelebb álló emberre. Legfeljebb hányan lőhetnek ugyanarra az emberre?
-
-7. Egy dobozban 30 egyforma nagyságú golyó van: pirosak, kékek és zöldek, mindegyikből különböző mennyiségű, zöldből van a legtöbb. Becsukott szemmel legalább 23 golyót kell kivennünk ahhoz, hogy biztosan legyen mindhárom színű golyó a kihúzottak között; illetve legalább 21 golyót, hogy biztosan legyen piros golyónk. Hány piros golyó van?
-
-8. 1 cm oldalú kis négyzetekből összeraktunk egy nagyobbat. A nagy négyzet átlóiban álló kis négyzetek területének összege 85 négyzetcentiméter. Mekkora a nagy négyzet területe négyzetcentiméterben megadva?
-
-9. Egy angol-magyar találkozó végén minden résztvevő elköszönt mindegyik másik résztvevőtől: az angolok mindenkinek egyesével ezt mondták: ,,Goodbye!'', míg a magyarok ezt: ,,Viszlát!'' Hányan angol vett részt a találkozón, ha 198-szor hangzott el az, hogy ,,Goodbye!'' és 308-szor az, hogy ,,Viszlát!''?
-
-**Bemenet Formátum:**
-
-Nincs bemenet ehhez a feladathoz, csak a leírás.
-
-**Kimenet:**
-
-**Példa:**
+***input.txt***
 
 ```
-1.: 450
-2.: 1943
-...
-8.: 123
-9.: 1.5
+10
+100
+1000
 ```
+
+***console printout:***
+
+```
+0, 3
+0, 3, 21
+0, 3, 21, 144, 987
+```
+
+---
+
+## 4. Jelek
+
+**Feladatmappa:**
+
+`signals`
+
+### Leírás:
+
+Dekódolni kell rádiójelekből álló információt. A jelek csipogásokból állnak, amelyeket szünetek választanak el, így alakulnak ki a kódok (pl. `3.4`, `2.1.2.4`).
+Minden nap reggelén új kódokat adnak le, napközben események történnek.
+
+A cél: kideríteni, hogy melyik kód melyik eseményhez tartozik.
+
+### Bemenet:
+
+* Egy lista, amely napokat reprezentál, minden nap egy `(codes, events)` tuple:
+
+  * `codes`: list of string kódok (pl. `["3.4", "2.1.2.4"]`)
+  * `events`: list of események (pl. `["A", "B"]`)
+
+### Kimenet:
+
+* Egy dictionary formátumban, ahol:
+
+  * kulcs: string kód
+  * érték: esemény betűjele
+
+### Példa:
+
+***input.txt***
+
+```
+[
+    (["4.1", "5"], ["A", "O"]),
+    (["4.1", "5", "1.2.3"], ["T", "O", "A"]),
+    (["5"], ["O"])
+]
+```
+
+***console printout:***
+
+```
+{
+    "5": "O",
+    "4.1": "A",
+    "1.2.3": "T"
+}
+```
+
+---
