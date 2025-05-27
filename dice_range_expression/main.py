@@ -48,7 +48,6 @@ def to_text(Dlist):
 	
 
 results=[get_dice_list(e) for e in inputs]
-print(results)
 for e in results:
 	print(to_text(e))
 	
